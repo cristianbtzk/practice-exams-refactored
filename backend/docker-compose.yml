@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  node:
+    build:
+      dockerfile: ./dockerfiles/node.dockerfile
+      context: .
+    image: cristian/exams
+    container_name: psychometrika-exams
+    ports:
+      - "3333:3333"
+    networks:
+      - exams-network
+    volumes:
+      - .:/var/www
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    container_name: psycho-exams-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=exams
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+    networks:
+      - exams-network
+networks:
+  exams-network:
+    driver: bridge
