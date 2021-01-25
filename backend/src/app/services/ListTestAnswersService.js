@@ -7,6 +7,7 @@ class ListTestsAnswersService {
       where: {
         test_id,
       },
+      order: [['number', 'ASC']],
     });
 
     return answers;
