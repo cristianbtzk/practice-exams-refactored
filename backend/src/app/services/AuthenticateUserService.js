@@ -14,13 +14,13 @@ class AuthenticateUserService {
     });
 
     if (!user) {
-      throw new AppError('User does not exist.');
+      throw new AppError('Incorrect data.', 401);
     }
 
-    const checkPasswordMatches = compare(password, user.password);
+    const checkPasswordMatches = await compare(password, user.password);
 
     if (!checkPasswordMatches) {
-      throw new AppError('Passwords does not match');
+      throw new AppError('Incorrect data', 401);
     }
 
     const { secret, expiresIn } = authConfig.jwt;
@@ -30,7 +30,7 @@ class AuthenticateUserService {
       expiresIn,
     });
 
-    delete user.password;
+    user.password = undefined;
 
     return { user, token };
   }

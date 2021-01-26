@@ -26,6 +26,7 @@
     "sucrase": "^3.17.0"
   },
   "scripts": {
+    "docs": "apidoc -i src/routes -o apidoc/",
     "dev": "nodemon src/server.js"
   }
 }

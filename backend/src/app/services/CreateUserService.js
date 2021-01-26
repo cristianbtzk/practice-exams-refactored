@@ -11,7 +11,7 @@ class CreateUserService {
     });
 
     if (checkEmail) {
-      throw new AppError('Email already in use');
+      throw new AppError('Email already in use', 409);
     }
 
     const passwordHash = await hash(password, 8);
@@ -21,7 +21,7 @@ class CreateUserService {
       password: passwordHash,
     });
 
-    delete user.password;
+    user.password = undefined;
 
     return user;
   }

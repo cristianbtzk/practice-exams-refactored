@@ -70,7 +70,9 @@ class CreateTestService {
       }
     );
 
-    return test;
+    const { id } = test;
+
+    return { id, score };
   }
 }
 
