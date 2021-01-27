@@ -1,15 +1,18 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
+import { useQuestions } from '../../hooks/questions';
 
 import { Container } from './styles';
 
 const Menu = () => {
   const { signOut } = useAuth();
+  const { startTest } = useQuestions();
   const history = useHistory();
   const handleStartTest = useCallback(() => {
+    startTest();
     history.push('/questions');
-  }, [history]);
+  }, [history, startTest]);
 
   const handleRanking = useCallback(() => {
     history.push('/ranking');

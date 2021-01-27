@@ -1,7 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import { Container, Form, Icons } from './styles';
+
 import api from '../../services/api';
 
 import iconsImg from '../../assets/Icons.svg';
@@ -22,13 +24,13 @@ const SignUp = () => {
           email,
           password,
         });
-
+        toast.success('Cadastro realizado.');
         history.push('/');
       } catch (err) {
-        alert('Erro ao cadastrar.');
+        toast.error('Erro ao cadastrar.');
       }
     },
-    [name, email, password]
+    [name, email, password, history]
   );
 
   return (

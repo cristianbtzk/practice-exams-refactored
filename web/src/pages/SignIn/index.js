@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
+import { toast } from 'react-toastify';
+
 import { Container, Form, Icons } from './styles';
 
 import iconsImg from '../../assets/Icons.svg';
@@ -21,9 +23,11 @@ const SignIn = () => {
 
       try {
         await signIn({ email, password });
+
+        toast.success('Bem vindo(a)!');
         history.push('/sign-up');
       } catch (err) {
-        alert('Erro ao realizar login');
+        toast.error('Erro ao realizar login, cheque seus dados');
       }
     },
     [history, email, password, signIn]

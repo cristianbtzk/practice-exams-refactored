@@ -18,8 +18,34 @@ const QuestionsProvider = ({ children }) => {
       answer: '',
     },
   ]);
-
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
+
+  const startTest = useCallback(() => {
+    setQuestions([
+      { number: 1, type: 'Matemática e suas tecnologias', answer: '' },
+      { number: 2, type: 'Matemática e suas tecnologias', answer: '' },
+      {
+        number: 3,
+        type: 'Prova: Ciências da Natureza e suas tecnologias',
+        answer: '',
+      },
+      {
+        number: 4,
+        type: 'Prova: Ciências da Natureza e suas tecnologias',
+        answer: '',
+      },
+    ]);
+
+    setCurrentQuestion({
+      number: 1,
+      type: 'Matemática e suas tecnologias',
+      answer: '',
+    });
+  }, []);
+
+  const finishTest = useCallback(() => {
+    setQuestions([]);
+  }, []);
 
   const setQuestion = useCallback(
     (number) => {
@@ -52,7 +78,14 @@ const QuestionsProvider = ({ children }) => {
 
   return (
     <QuestionsContext.Provider
-      value={{ questions, editAnswers, currentQuestion, setQuestion }}
+      value={{
+        startTest,
+        finishTest,
+        questions,
+        editAnswers,
+        currentQuestion,
+        setQuestion,
+      }}
     >
       {children}
     </QuestionsContext.Provider>

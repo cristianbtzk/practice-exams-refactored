@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { GiConfirmed } from 'react-icons/gi';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import iconsImg from '../../assets/Icons.svg';
 import Answer from '../../components/Answer';
 import { useQuestions } from '../../hooks/questions';
@@ -23,13 +24,15 @@ const Answers = () => {
   const handleSaveAnswers = useCallback(async () => {
     const name = localStorage.getItem('@psycho:name');
     const email = localStorage.getItem('@psycho:email');
-
-    await api.post('/tests', {
-      name,
-      email,
-      answers: questions,
-    });
-
+    try {
+      await api.post('/tests', {
+        name,
+        email,
+        answers: questions,
+      });
+    } catch (err) {
+      toast.err('Erro ao enviar respostas');
+    }
     setResponsesSent(true);
   }, [questions]);
 
