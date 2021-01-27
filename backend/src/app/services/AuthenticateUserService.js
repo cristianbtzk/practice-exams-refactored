@@ -1,17 +1,13 @@
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 
-import User from '../models/User';
+import UserRepository from '../repositories/UsersRepository';
 import AppError from '../../errors/AppError';
 import authConfig from '../../config/auth';
 
 export default {
   async execute({ email, password }) {
-    const user = await User.findOne({
-      where: {
-        email,
-      },
-    });
+    const user = await UserRepository.findByEmail(email);
 
     if (!user) {
       throw new AppError('Incorrect data.', 401);

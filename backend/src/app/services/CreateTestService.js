@@ -1,4 +1,4 @@
-import Test from '../models/Test';
+import TestsRepository from '../repositories/TestsRepository';
 
 export default {
   async execute({ user_id, answers }) {
@@ -51,16 +51,11 @@ export default {
       return answerCorrected;
     });
 
-    const test = await Test.create(
-      {
-        score,
-        user_id,
-        answers: correctedAnswers,
-      },
-      {
-        include: { association: 'answers' },
-      }
-    );
+    const test = await TestsRepository.create({
+      score,
+      user_id,
+      answers: correctedAnswers,
+    });
 
     const { id } = test;
 
