@@ -1,7 +1,7 @@
 import Answer from '../models/Answer';
 // import AppError from '../../errors/AppError';
 
-class ListTestsAnswersService {
+export default {
   async execute(test_id) {
     const answers = await Answer.findAll({
       where: {
@@ -11,7 +11,5 @@ class ListTestsAnswersService {
     });
 
     return answers;
-  }
-}
-
-export default new ListTestsAnswersService();
+  },
+};

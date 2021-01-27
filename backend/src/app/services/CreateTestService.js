@@ -1,15 +1,7 @@
 import Test from '../models/Test';
-import User from '../models/User';
-import AppError from '../../errors/AppError';
 
-class CreateTestService {
+export default {
   async execute({ user_id, answers }) {
-    const checkUser = await User.findByPk(user_id);
-
-    if (!checkUser) {
-      throw new AppError('User does not exist');
-    }
-
     let score = 0;
 
     const correctedAnswers = answers.map(answer => {
@@ -73,7 +65,5 @@ class CreateTestService {
     const { id } = test;
 
     return { id, score };
-  }
-}
-
-export default new CreateTestService();
+  },
+};

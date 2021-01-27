@@ -15,10 +15,10 @@ export default function checkAuthentication(request, response, next) {
   try {
     const decoded = verify(token, authConfig.jwt.secret);
 
-    const { sub } = decoded;
+    const { id } = decoded;
 
     request.user = {
-      id: sub,
+      id,
     };
 
     return next();

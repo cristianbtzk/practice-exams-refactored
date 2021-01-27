@@ -1,13 +1,11 @@
 import ListTestAnswersService from '../services/ListTestAnswersService';
 
-class TestsController {
+export default {
   async index(request, response) {
     const { test_id } = request.params;
 
-    const answers = await ListTestAnswersService.execute(test_id);
+    const answers = await ListTestAnswersService.execute(parseInt(test_id, 10));
 
     return response.json(answers);
-  }
-}
-
-export default new TestsController();
+  },
+};

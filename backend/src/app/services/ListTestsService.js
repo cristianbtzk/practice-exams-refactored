@@ -1,7 +1,7 @@
 import Test from '../models/Test';
 // import AppError from '../../errors/AppError';
 
-class ListTestsService {
+export default {
   async execute(page) {
     const skipQuantity = 5 * (page - 1);
 
@@ -14,7 +14,5 @@ class ListTestsService {
     });
 
     return { count, tests: rows };
-  }
-}
-
-export default new ListTestsService();
+  },
+};

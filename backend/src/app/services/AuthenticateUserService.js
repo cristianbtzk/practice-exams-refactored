@@ -5,7 +5,7 @@ import User from '../models/User';
 import AppError from '../../errors/AppError';
 import authConfig from '../../config/auth';
 
-class AuthenticateUserService {
+export default {
   async execute({ email, password }) {
     const user = await User.findOne({
       where: {
@@ -25,15 +25,12 @@ class AuthenticateUserService {
 
     const { secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({}, secret, {
-      subject: user.id,
+    const token = sign({ id: user.id }, secret, {
       expiresIn,
     });
 
     user.password = undefined;
 
     return { user, token };
-  }
-}
-
-export default new AuthenticateUserService();
+  },
+};
