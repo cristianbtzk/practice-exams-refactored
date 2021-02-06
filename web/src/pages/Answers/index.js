@@ -30,10 +30,10 @@ const Answers = () => {
         email,
         answers: questions,
       });
+      setResponsesSent(true);
     } catch (err) {
       toast.err('Erro ao enviar respostas');
     }
-    setResponsesSent(true);
   }, [questions]);
 
   const handleButtonLogout = useCallback(async () => {
@@ -73,7 +73,7 @@ const Answers = () => {
         </AnswersContainer>
         {!responsesSent ? (
           <button type="button" onClick={handleSaveAnswers}>
-            Salvar Repostas
+            Salvar Respostas
           </button>
         ) : (
           <Options>

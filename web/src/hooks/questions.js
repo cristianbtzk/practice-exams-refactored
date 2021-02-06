@@ -95,10 +95,6 @@ const QuestionsProvider = ({ children }) => {
 function useQuestions() {
   const context = useContext(QuestionsContext);
 
-  if (!context) {
-    throw new Error('Context does not exist');
-  }
-
   return context;
 }
 

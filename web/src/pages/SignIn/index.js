@@ -25,7 +25,7 @@ const SignIn = () => {
         await signIn({ email, password });
 
         toast.success('Bem vindo(a)!');
-        history.push('/sign-up');
+        history.push('/menu');
       } catch (err) {
         toast.error('Erro ao realizar login, cheque seus dados');
       }

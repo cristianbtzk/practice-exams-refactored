@@ -12,10 +12,17 @@ const RankingTest = () => {
   const location = useLocation();
 
   useEffect(() => {
+    let isMounted = true;
     const test_id = location.search.replace('?test=', '');
+
     api.get(`/answers/${test_id}`).then((response) => {
-      setAnswers(response.data);
+      if (isMounted) {
+        setAnswers(response.data);
+      }
     });
+    return () => {
+      isMounted = false;
+    };
   }, [location.search]);
 
   const handleReturn = useCallback(async () => {

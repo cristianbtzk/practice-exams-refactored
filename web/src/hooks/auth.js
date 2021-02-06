@@ -48,10 +48,6 @@ export const AuthProvider = ({ children }) => {
 export function useAuth() {
   const context = useContext(AuthContext);
 
-  if (!context) {
-    throw new Error('Error in AuthContext');
-  }
-
   return context;
 }
 
