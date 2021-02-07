@@ -1,8 +1,8 @@
-import { hash } from 'bcrypt';
-import UserRepository from '../repositories/UsersRepository';
-import AppError from '../../errors/AppError';
+const { hash } = require('bcrypt');
+const UserRepository = require('../repositories/UsersRepository');
+const AppError = require('../../errors/AppError');
 
-export default {
+module.exports = {
   async execute({ name, email, password }) {
     const checkEmail = await UserRepository.findByEmail(email);
     if (checkEmail) {

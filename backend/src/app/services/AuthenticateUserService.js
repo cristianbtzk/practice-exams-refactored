@@ -1,11 +1,11 @@
-import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
+const { compare } = require('bcrypt');
+const { sign } = require('jsonwebtoken');
 
-import UserRepository from '../repositories/UsersRepository';
-import AppError from '../../errors/AppError';
-import authConfig from '../../config/auth';
+const UserRepository = require('../repositories/UsersRepository');
+const AppError = require('../../errors/AppError');
+const authConfig = require('../../config/auth');
 
-export default {
+module.exports = {
   async execute({ email, password }) {
     const user = await UserRepository.findByEmail(email);
 

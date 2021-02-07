@@ -1,12 +1,11 @@
-import './bootstrap';
+require('./database');
+require('./bootstrap');
+const express = require('express');
+const cors = require('cors');
+require('express-async-errors');
 
-import express from 'express';
-import 'express-async-errors';
-import cors from 'cors';
-
-import './database';
-import AppError from './errors/AppError';
-import routes from './routes';
+const AppError = require('./errors/AppError');
+const routes = require('./routes');
 
 class App {
   constructor() {
@@ -43,4 +42,4 @@ class App {
   }
 }
 
-export default new App().server;
+module.exports = new App().server;

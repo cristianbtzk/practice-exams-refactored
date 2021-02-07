@@ -1,6 +1,6 @@
-import User from '../models/User';
+const User = require('../models/User');
 
-export default {
+module.exports = {
   async create({ name, email, password }) {
     const user = await User.create({ name, email, password });
 

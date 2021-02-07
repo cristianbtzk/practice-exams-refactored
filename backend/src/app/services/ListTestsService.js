@@ -1,6 +1,6 @@
-import TestRepository from '../repositories/TestsRepository';
+const TestRepository = require('../repositories/TestsRepository');
 
-export default {
+module.exports = {
   async execute(page) {
     const skipQuantity = 5 * (page - 1);
 

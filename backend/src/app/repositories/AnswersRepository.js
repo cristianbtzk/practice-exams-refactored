@@ -1,6 +1,6 @@
-import Answer from '../models/Answer';
+const Answer = require('../models/Answer');
 
-export default {
+module.exports = {
   async listAnswersFromTest(test_id) {
     const answers = await Answer.findAll({
       where: {

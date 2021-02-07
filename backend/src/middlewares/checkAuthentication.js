@@ -1,9 +1,9 @@
-import { verify } from 'jsonwebtoken';
+const { verify } = require('jsonwebtoken');
 
-import authConfig from '../config/auth';
-import AppError from '../errors/AppError';
+const authConfig = require('../config/auth');
+const AppError = require('../errors/AppError');
 
-export default function checkAuthentication(request, response, next) {
+function checkAuthentication(request, response, next) {
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
@@ -26,3 +26,5 @@ export default function checkAuthentication(request, response, next) {
     throw new AppError('Invalid JWT token', 401);
   }
 }
+
+module.exports = checkAuthentication;

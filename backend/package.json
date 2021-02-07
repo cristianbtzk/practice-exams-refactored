@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@cucumber/cucumber": "^7.0.0",
     "apidoc": "^0.26.0",
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
@@ -37,6 +38,9 @@
     "dev": "nodemon src/server.js",
     "pretest": "NODE_ENV=test sequelize db:migrate",
     "test": "NODE_ENV=test jest",
-    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
+    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
+    "pretest-cucumber": "NODE_ENV=test sequelize db:migrate",
+    "test-cucumber": "NODE_ENV=test cucumber-js ./__tests__/cucumber/ ",
+    "posttest-cucumber": "NODE_ENV=test sequelize db:migrate:undo:all"
   }
 }

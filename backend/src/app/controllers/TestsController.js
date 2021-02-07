@@ -1,7 +1,7 @@
-import CreateTestService from '../services/CreateTestService';
-import ListTestsService from '../services/ListTestsService';
+const CreateTestService = require('../services/CreateTestService');
+const ListTestsService = require('../services/ListTestsService');
 
-export default {
+module.exports = {
   async create(request, response) {
     const { answers } = request.body;
     const user_id = parseInt(request.user.id, 10);

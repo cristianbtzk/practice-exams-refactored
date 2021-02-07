@@ -1,6 +1,6 @@
-import ListTestAnswersService from '../services/ListTestAnswersService';
+const ListTestAnswersService = require('../services/ListTestAnswersService');
 
-export default {
+module.exports = {
   async index(request, response) {
     const { test_id } = request.params;
 

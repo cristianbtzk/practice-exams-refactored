@@ -1,6 +1,6 @@
-import CreateUserService from '../services/CreateUserService';
+const CreateUserService = require('../services/CreateUserService');
 
-export default {
+module.exports = {
   async create(request, response) {
     const { name, email, password } = request.body;
 

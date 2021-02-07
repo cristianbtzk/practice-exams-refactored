@@ -1,6 +1,6 @@
-import Test from '../models/Test';
+const Test = require('../models/Test');
 
-export default {
+module.exports = {
   async create({ score, user_id, answers }) {
     const test = await Test.create(
       {

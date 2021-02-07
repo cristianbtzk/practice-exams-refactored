@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import UsersController from '../app/controllers/UsersController';
+const { Router } = require('express');
+const UsersController = require('../app/controllers/UsersController');
 
 const usersRouter = Router();
 
@@ -43,4 +43,4 @@ const usersRouter = Router();
 
 usersRouter.post('/', UsersController.create);
 
-export default usersRouter;
+module.exports = usersRouter;

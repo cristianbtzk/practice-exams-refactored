@@ -1,7 +1,7 @@
-import request from 'supertest';
-import app from '../../src/app';
+const request = require('supertest');
+const app = require('../../src/app');
 
-import truncate from '../utils/truncate';
+const truncate = require('../utils/truncate');
 
 describe('Answer', () => {
   beforeEach(async () => {

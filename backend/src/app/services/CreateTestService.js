@@ -1,6 +1,6 @@
-import TestsRepository from '../repositories/TestsRepository';
+const TestsRepository = require('../repositories/TestsRepository');
 
-export default {
+module.exports = {
   async execute({ user_id, answers }) {
     let score = 0;
 

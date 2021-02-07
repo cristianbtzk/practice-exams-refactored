@@ -1,6 +1,6 @@
-import AuthenticateUserService from '../services/AuthenticateUserService';
+const AuthenticateUserService = require('../services/AuthenticateUserService');
 
-export default {
+module.exports = {
   async create(request, response) {
     const { email, password } = request.body;
 

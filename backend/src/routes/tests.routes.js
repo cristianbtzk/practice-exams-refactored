@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import TestsController from '../app/controllers/TestsController';
-import checkAuthentication from '../middlewares/checkAuthentication';
+const { Router } = require('express');
+const TestsController = require('../app/controllers/TestsController');
+const checkAuthentication = require('../middlewares/checkAuthentication');
 
 const testsRouter = Router();
 
@@ -101,4 +101,4 @@ testsRouter.post('/', TestsController.create);
 
 testsRouter.get('/:page', TestsController.index);
 
-export default testsRouter;
+module.exports = testsRouter;

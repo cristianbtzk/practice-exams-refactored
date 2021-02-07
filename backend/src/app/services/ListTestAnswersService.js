@@ -1,6 +1,6 @@
-import AnswersRepository from '../repositories/AnswersRepository';
+const AnswersRepository = require('../repositories/AnswersRepository');
 
-export default {
+module.exports = {
   async execute(test_id) {
     const answers = await AnswersRepository.listAnswersFromTest(test_id);
 
