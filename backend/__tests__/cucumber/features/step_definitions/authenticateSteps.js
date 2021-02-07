@@ -8,30 +8,35 @@ Before(async () => {
   await truncate();
 });
 
-const userCreated = user => {
-  if (user.name === 'John Doe') {
+const userAuthenticated = authenticateResponse => {
+  if (authenticateResponse.token) {
     this.status = 'Sucesso';
   }
 
   return 'erro';
 };
 
-Given('um nome, senha e email validos', () => {
+Given('um usuário já cadastrado', async () => {
   this.email = 'email@email.com';
   this.name = 'John Doe';
   this.password = 'password';
-});
 
-When('ocorre um Post na rota users', async () => {
-  const response = await request(app).post('/users').send({
+  await request(app).post('/users').send({
     name: this.name,
     email: this.email,
     password: this.password,
   });
-
-  userCreated(response.body);
 });
 
-Then('a resposta para o cadastro deve ser {string}', response =>
+When('ocorre um Post na rota sessions com email e senha válidos', async () => {
+  const response = await request(app).post('/sessions').send({
+    email: this.email,
+    password: this.password,
+  });
+
+  userAuthenticated(response.body);
+});
+
+Then('a resposta para a autenticação deve ser {string}', response =>
   assert.strictEqual(this.status, response)
 );

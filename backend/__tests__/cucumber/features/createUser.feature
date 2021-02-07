@@ -6,4 +6,4 @@ Funcionalidade: Cadastrar Usuário.
   Cenário: Sucesso no cadastro
     Dado um nome, senha e email validos
     Quando ocorre um Post na rota users
-    Então a resposta deve ser "Sucesso"
+    Então a resposta para o cadastro deve ser "Sucesso"
