@@ -17,10 +17,18 @@ const Ranking = () => {
   }, [history]);
 
   useEffect(() => {
+    let isMounted = true;
+
     api.get(`/tests/${currentPage}`).then((response) => {
-      setTests(response.data.tests);
-      setPages(Math.ceil(response.data.count / 5));
+      if (isMounted) {
+        setTests(response.data.tests);
+        setPages(Math.ceil(response.data.count / 5));
+      }
     });
+
+    return () => {
+      isMounted = false;
+    };
   }, [currentPage]);
 
   return (

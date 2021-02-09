@@ -35,7 +35,7 @@ const RankingElement = ({ test }) => {
 
 RankingElement.propTypes = {
   test: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     score: PropTypes.number,
     user: PropTypes.shape({
       name: PropTypes.string,

@@ -1,7 +1,7 @@
 import React from 'react';
 import MockAdapter from 'axios-mock-adapter';
 
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import api from '../../../services/api';
 import RankingTest from '../../../pages/RankingTest';
 
@@ -38,6 +38,6 @@ describe('Ranking Test test', () => {
 
     const { findByText } = render(<RankingTest />);
 
-    expect(await findByText('Incorretaaa')).not.toBeInTheDocument();
+    expect(await findByText('Questão 1')).toBeInTheDocument();
   });
 });

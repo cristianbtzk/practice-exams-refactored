@@ -35,7 +35,7 @@ jest.mock('../../../hooks/questions', () => ({
       {
         number: 4,
         type: 'Prova: Ciências da Natureza e suas tecnologias',
-        answer: 'd',
+        answer: '',
       },
     ],
   }),
@@ -52,7 +52,6 @@ describe('Answers tests', () => {
     expect(await findByText('Letra A')).toBeInTheDocument();
     expect(await findByText('Letra B')).toBeInTheDocument();
     expect(await findByText('Letra C')).toBeInTheDocument();
-    expect(await findByText('Letra D')).toBeInTheDocument();
   });
 
   it('should post answers to API and display a modal', async () => {
