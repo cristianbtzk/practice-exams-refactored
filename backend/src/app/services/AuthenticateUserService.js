@@ -10,7 +10,6 @@ module.exports = {
     const user = await UserRepository.findByEmail(email);
 
     if (!user) {
-      console.log('Não encontda');
       throw new AppError('Incorrect data.', 401);
     }
 
