@@ -4,10 +4,6 @@ const app = require('../../src/app');
 const truncate = require('../utils/truncate');
 
 describe('Session', () => {
-  beforeEach(async () => {
-    await truncate();
-  });
-
   it('should be able to authenticate', async () => {
     await request(app).post('/users').send({
       name: 'John Doe',

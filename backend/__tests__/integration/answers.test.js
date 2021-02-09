@@ -4,10 +4,6 @@ const app = require('../../src/app');
 const truncate = require('../utils/truncate');
 
 describe('Answer', () => {
-  beforeEach(async () => {
-    await truncate();
-  });
-
   it('should be able to list test answers', async () => {
     await request(app).post('/users').send({
       name: 'John Doe',
@@ -21,7 +17,6 @@ describe('Answer', () => {
     });
 
     const { token } = sessionResponse.body;
-    console.log('token:::::', sessionResponse.body);
 
     const testResponse = await request(app)
       .post('/tests')

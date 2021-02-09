@@ -4,10 +4,6 @@ const app = require('../../src/app');
 const truncate = require('../utils/truncate');
 
 describe('Test', () => {
-  beforeEach(async () => {
-    await truncate();
-  });
-
   it('should be able to create Tests', async () => {
     await request(app).post('/users').send({
       name: 'John Doe',
