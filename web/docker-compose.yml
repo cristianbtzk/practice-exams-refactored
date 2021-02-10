@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  aapp:
+    build:
+      dockerfile: ./react.dockerfile
+      context: .
+    image: cristian/exams/app
+    container_name: psychometrika-exams-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/app

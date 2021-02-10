@@ -12,7 +12,7 @@ services:
     networks:
       - exams-network
     volumes:
-      - .:/var/www
+      - .:/var/www/api
     depends_on:
       - postgres
   postgres:
