@@ -1,8 +1,6 @@
 const request = require('supertest');
 const app = require('../../src/app');
 
-const truncate = require('../utils/truncate');
-
 describe('Test', () => {
   it('should be able to create Tests', async () => {
     await request(app).post('/users').send({
@@ -45,7 +43,7 @@ describe('Test', () => {
     expect(response.body).toHaveProperty('id');
   });
 
-  /* it('should be able to list tests', async () => {
+  it('should be able to list tests', async () => {
     const userResponse = await request(app).post('/users').send({
       name: 'John Doe',
       email: 'johndoe2@gmail.com',
@@ -100,5 +98,5 @@ describe('Test', () => {
         },
       ])
     );
-  }); */
+  });
 });

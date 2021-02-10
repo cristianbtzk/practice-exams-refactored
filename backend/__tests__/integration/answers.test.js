@@ -1,8 +1,6 @@
 const request = require('supertest');
 const app = require('../../src/app');
 
-const truncate = require('../utils/truncate');
-
 describe('Answer', () => {
   it('should be able to list test answers', async () => {
     await request(app).post('/users').send({
